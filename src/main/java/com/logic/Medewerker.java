@@ -3,13 +3,13 @@ package com.logic;
 import com.Database;
 
 public class Medewerker {
-    private String username;
-    private String password;
+    private final String username;
+    private final String password;
 
     public Medewerker(String username, String password){
         this.username = username;
         this.password = password;
-        Database.medewerkerList.add(this);
+        Database.addMedewerker(this);
     }
 
     public String getUsername(){

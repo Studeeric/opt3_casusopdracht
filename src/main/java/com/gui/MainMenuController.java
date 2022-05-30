@@ -17,7 +17,7 @@ public class MainMenuController extends Controller{
     private Label actieveMedewerker;
 
     public void onHelloButtonClick() {
-        actieveMedewerker.setText(medewerker.getUsername());
+        actieveMedewerker.setText(currentMedewerker.getUsername());
     }
 
     public void onExitButtonClick(){
@@ -26,10 +26,10 @@ public class MainMenuController extends Controller{
     }
 
     public void onOverzichtButtonClick() throws IOException {
-        Main.popUp("overzicht", medewerker, false);
+        Main.popUp("overzicht", currentMedewerker, false);
     }
 
     public void onBeheerButtonClick() throws IOException {
-        Main.popUp("beheer", medewerker, false);
+        Main.popUp("beheer", currentMedewerker, false);
     }
 }

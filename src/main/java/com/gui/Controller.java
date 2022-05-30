@@ -4,11 +4,11 @@ import com.logic.Medewerker;
 import com.logic.machines.Machine;
 
 public abstract class Controller {
-    protected Medewerker medewerker;
+    protected Medewerker currentMedewerker;
     protected Machine currentMachine;
 
-    public void setMedewerker(Medewerker medewerker){
-        this.medewerker = medewerker;
+    public void setCurrentMedewerker(Medewerker currentMedewerker){
+        this.currentMedewerker = currentMedewerker;
     }
 
     public void setCurrentMachine(Machine currentMachine) {

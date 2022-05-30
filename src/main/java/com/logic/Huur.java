@@ -1,18 +1,14 @@
 package com.logic;
 
-import com.logic.machines.Machine;
-
-public class HuurRegel {
+public class Huur {
     private final String klantNaam;
     private final int dagen;
     private final Medewerker medewerker;
-    private final Machine machine;
     private final boolean verzekering;
 
-    public HuurRegel(Medewerker medewerker, String klantNaam, Machine machine, int dagen, boolean verzekering){
+    public Huur(Medewerker medewerker, String klantNaam, int dagen, boolean verzekering){
         this.medewerker = medewerker;
         this.klantNaam = klantNaam;
-        this.machine = machine;
         this.dagen = dagen;
         this.verzekering = verzekering;
     }
@@ -29,11 +25,7 @@ public class HuurRegel {
         return medewerker;
     }
 
-    public Machine getMachine() {
-        return machine;
-    }
-
-    public double getPrijs(){
-        return this.machine.getTotaalPrijs(this.dagen, this.verzekering);
+    public boolean isVerzekering(){
+        return verzekering;
     }
 }

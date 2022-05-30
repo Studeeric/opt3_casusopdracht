@@ -23,11 +23,11 @@ public class LoginController extends Controller{
 
     public void onHelloButtonClick() throws IOException {
         boolean notFound = true;
-        for (Medewerker medewerker : Database.medewerkerList){
+        for (Medewerker medewerker : Database.getMedewerkerList()){
             if (medewerker.getUsername().equals(usernameField.getText())){
                 if (medewerker.checkPassword(passwordField.getText())){
                     notFound = false;
-                    Main.popUp("mainmenu", medewerker, false);
+                    Main.popUp("mainmenu", medewerker, true);
                 }
             }
         }

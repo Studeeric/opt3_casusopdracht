@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.DetailVensterController">
-    <Label fx:id="classLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="59.0" prefWidth="165.0" text="PersonenAuto">
-      <font>
-         <Font name="System Bold" size="24.0" />
-      </font></Label>
+   <Pane layoutX="14.0" layoutY="14.0" prefHeight="108.0" prefWidth="221.0">
+      <children>
+          <Label fx:id="classLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="77.0" prefWidth="221.0" text="Type">
+            <font>
+               <Font name="System Bold" size="24.0" />
+            </font>
+         </Label>
+          <Label fx:id="idLabel" alignment="CENTER" layoutY="69.0" prefHeight="40.0" prefWidth="221.0" text="ID" />
+      </children>
+   </Pane>
+   <Pane fx:id="roodPane" layoutX="750.0" layoutY="20.0" prefHeight="77.0" prefWidth="200.0" style="-fx-background-color: red;">
+      <children>
+         <Label alignment="CENTER" prefHeight="77.0" prefWidth="200.0" text="Verhuurd">
+            <font>
+               <Font name="System Bold" size="41.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <Pane fx:id="groenPane" layoutX="750.0" layoutY="20.0" prefHeight="77.0" prefWidth="200.0" style="-fx-background-color: green;">
+      <children>
+         <Label alignment="CENTER" prefHeight="77.0" prefWidth="200.0" text="Beschikbaar">
+            <font>
+               <Font name="System Bold" size="35.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <TextField fx:id="klantNaamField" layoutX="655.0" layoutY="281.0" promptText="Klantnaam" />
+   <Text layoutX="655.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Klantnaam" />
+   <TextField fx:id="verkoperField" layoutX="216.0" layoutY="281.0" promptText="Verkoper" />
+   <Text layoutX="216.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verkoper" />
+   <Button fx:id="retourButton" disable="true" layoutX="824.0" layoutY="110.0" mnemonicParsing="false" onAction="#retourActivation" text="Retour" />
 </AnchorPane>

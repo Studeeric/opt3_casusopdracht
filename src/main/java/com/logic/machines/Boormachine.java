@@ -3,13 +3,13 @@ package com.logic.machines;
 import com.Database;
 
 public class Boormachine extends Machine{
-    private String merk;
-    private String type;
+    private final String merk;
+    private final String type;
 
     public Boormachine(String merk, String type){
         this.merk = merk;
         this.type = type;
-        Database.machineList.add(this);
+        Database.addMachine(this);
     }
 
     public String getMerk() {
@@ -20,12 +20,9 @@ public class Boormachine extends Machine{
         return type;
     }
 
+    @Override
     public String getClassType(){
         return "Boormachine";
-    }
-
-    public String getMachineInfo(){
-        return "Merk: " + merk + " | Type: " + type;
     }
 
     @Override

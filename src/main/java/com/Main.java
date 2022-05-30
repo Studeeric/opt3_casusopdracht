@@ -34,7 +34,7 @@ public class Main extends Application {
         AnchorPane mainLayout = loader.load();
 
         Controller controller = loader.getController();
-        controller.setMedewerker(medewerker);
+        controller.setCurrentMedewerker(medewerker);
         controller.setCurrentMachine(machine);
         Scene scene = new Scene(mainLayout, 1000, 650);
         String c = fxml.substring(0, 1).toUpperCase();
@@ -60,12 +60,13 @@ public class Main extends Application {
     }
 
     private static void seed() {
-        new Medewerker("Eric", "Bull");
-        new Boormachine("Boormachine merk", "Boren?");
+        new Medewerker("Broeder", "Bier");
+        Medewerker medewerker = new Medewerker("Eric", "Bull");
+        new Boormachine("Boormachine merk", "Boren?").setHuur(medewerker, "Stef Beens", 7, false);
         new PersonenAuto("Auto merk", 69);
         new VrachtAuto(420, 666);
         new Boormachine("Boormachine merk 2!!", "Grillen");
-        for (Machine machine : Database.machineList){
+        for (Machine machine : Database.getMachineList()){
             System.out.println(machine.getMachineInfo());
         }
     }

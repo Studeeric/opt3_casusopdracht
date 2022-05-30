@@ -3,13 +3,13 @@ package com.logic.machines;
 import com.Database;
 
 public class VrachtAuto extends Machine{
-    private double laadVermogen;
-    private double gewicht;
+    private final double laadVermogen;
+    private final double gewicht;
 
     public VrachtAuto(double laadVermogen, double gewicht){
         this.laadVermogen = laadVermogen;
         this.gewicht = gewicht;
-        Database.machineList.add(this);
+        Database.addMachine(this);
     }
 
     public double getLaadVermogen(){
@@ -20,12 +20,9 @@ public class VrachtAuto extends Machine{
         return this.gewicht;
     }
 
+    @Override
     public String getClassType(){
         return "VrachtAuto";
-    }
-
-    public String getMachineInfo(){
-        return "Laadvermogen: " + laadVermogen + " | Gewicht: " + gewicht;
     }
 
     @Override
