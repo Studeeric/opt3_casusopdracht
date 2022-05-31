@@ -3,7 +3,9 @@ package com.gui;
 import com.logic.Medewerker;
 import com.logic.machines.Machine;
 
-public abstract class Controller {
+import java.beans.PropertyChangeListener;
+
+public abstract class Controller implements PropertyChangeListener {
     protected Medewerker currentMedewerker;
     protected Machine currentMachine;
 

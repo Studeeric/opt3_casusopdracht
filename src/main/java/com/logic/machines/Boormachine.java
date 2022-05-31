@@ -25,6 +25,22 @@ public class Boormachine extends Machine{
         return "Boormachine";
     }
 
+    public String getMachineInfo1Type(){
+        return "Merk";
+    }
+
+    public String getMachineInfo1() {
+        return merk;
+    }
+
+    public String getMachineInfo2Type(){
+        return "Type";
+    }
+
+    public String getMachineInfo2(){
+        return type;
+    }
+
     @Override
     public double getHuurPrijs() {
         return 5;

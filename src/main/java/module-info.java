@@ -1,6 +1,7 @@
 module com.gui {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens com.gui to javafx.fxml;

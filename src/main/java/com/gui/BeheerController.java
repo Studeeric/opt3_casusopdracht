@@ -1,8 +1,13 @@
 package com.gui;
 
-import javafx.event.ActionEvent;
+import java.beans.PropertyChangeEvent;
 
 public class BeheerController extends Controller{
-    public void onHelloButtonClick(ActionEvent actionEvent) {
+    public void onHelloButtonClick() {
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+
     }
 }

@@ -8,7 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.beans.PropertyChangeEvent;
 import java.io.IOException;
+import java.util.Observable;
 
 public class LoginController extends Controller{
 
@@ -27,10 +29,15 @@ public class LoginController extends Controller{
             if (medewerker.getUsername().equals(usernameField.getText())){
                 if (medewerker.checkPassword(passwordField.getText())){
                     notFound = false;
-                    Main.popUp("mainmenu", medewerker, true);
+                    Main.popUp("MainMenu", medewerker, currentMachine);
                 }
             }
         }
         welcomeText.setVisible(notFound);
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+
     }
 }

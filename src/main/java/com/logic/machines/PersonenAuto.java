@@ -20,6 +20,22 @@ public class PersonenAuto extends Machine{
         return this.gewicht;
     }
 
+    public String getMachineInfo1Type(){
+        return "Merk";
+    }
+
+    public String getMachineInfo1() {
+        return merk;
+    }
+
+    public String getMachineInfo2Type(){
+        return "Gewicht";
+    }
+
+    public String getMachineInfo2(){
+        return String.format("%.2f", gewicht);
+    }
+
     @Override
     public String getClassType(){
         return "PersonenAuto";

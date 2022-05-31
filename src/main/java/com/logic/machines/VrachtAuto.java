@@ -1,6 +1,7 @@
 package com.logic.machines;
 
 import com.Database;
+import javafx.beans.InvalidationListener;
 
 public class VrachtAuto extends Machine{
     private final double laadVermogen;
@@ -18,6 +19,22 @@ public class VrachtAuto extends Machine{
 
     public double getGewicht(){
         return this.gewicht;
+    }
+
+    public String getMachineInfo1Type(){
+        return "Laadvermogen";
+    }
+
+    public String getMachineInfo1() {
+        return String.format("%.2f",laadVermogen);
+    }
+
+    public String getMachineInfo2Type(){
+        return "Gewicht";
+    }
+
+    public String getMachineInfo2(){
+        return String.format("%.2f", gewicht);
     }
 
     @Override

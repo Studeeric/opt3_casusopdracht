@@ -6,7 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.beans.PropertyChangeEvent;
 import java.io.IOException;
+import java.util.Observable;
 
 public class MainMenuController extends Controller{
 
@@ -26,10 +28,15 @@ public class MainMenuController extends Controller{
     }
 
     public void onOverzichtButtonClick() throws IOException {
-        Main.popUp("overzicht", currentMedewerker, false);
+        Main.popUp("overzicht", currentMedewerker, currentMachine);
     }
 
     public void onBeheerButtonClick() throws IOException {
-        Main.popUp("beheer", currentMedewerker, false);
+        Main.popUp("beheer", currentMedewerker, currentMachine);
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+
     }
 }
