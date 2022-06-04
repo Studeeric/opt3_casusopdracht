@@ -31,7 +31,9 @@ public class LoginController extends Controller {
             if (medewerker.getUsername().equals(usernameField.getText())){
                 if (medewerker.checkPassword(passwordField.getText())){
                     notFound = false;
-                    Main.popUp("MainMenu", medewerker, currentMachine);
+                    currentSession.setCurrentMedewerker(medewerker);
+                    currentSession.setFxmlName("MainMenu");
+                    Main.popUp(currentSession);
                 }
             }
         }

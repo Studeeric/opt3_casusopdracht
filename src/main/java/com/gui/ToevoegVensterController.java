@@ -1,10 +1,7 @@
 package com.gui;
 
 import com.Database;
-import com.logic.machines.Boormachine;
-import com.logic.machines.Machine;
-import com.logic.machines.PersonenAuto;
-import com.logic.machines.VrachtAuto;
+import com.logic.CurrentSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,26 +13,19 @@ import javafx.stage.Stage;
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Observable;
 import java.util.ResourceBundle;
 
 public class ToevoegVensterController extends Controller implements Initializable {
 
+    @FXML
+    private TextField info1Field;
 
     @FXML
-    private TextField gewichtField;
-
-    @FXML
-    private TextField laadvermogenField;
+    private TextField info2Field;
 
     @FXML
     private Button maakButton;
 
-    @FXML
-    private TextField merkField;
-
-    @FXML
-    private TextField typeField;
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
@@ -43,38 +33,36 @@ public class ToevoegVensterController extends Controller implements Initializabl
     }
 
     @Override
-    public void setCurrentMachine(Machine currentMachine){
-        this.currentMachine = currentMachine;
-        if (currentMachine instanceof PersonenAuto){
-            merkField.setVisible(true);
-            gewichtField.setVisible(true);
-        } else if (currentMachine instanceof VrachtAuto) {
-            laadvermogenField.setVisible(true);
-            gewichtField.setVisible(true);
-        } else if (currentMachine instanceof Boormachine) {
-            merkField.setVisible(true);
-            typeField.setVisible(true);
+    public void setCurrentSession(CurrentSession currentSession){
+        this.currentSession = currentSession;
+        info1Field.setPromptText(currentSession.getCurrentMachine().getMachineInfo1Type());
+        info2Field.setPromptText(currentSession.getCurrentMachine().getMachineInfo2Type());
+        if (!currentSession.getCurrentMachine().isInfoType1String()){
+            addNumberLimiter(info1Field);
         }
+        if (!currentSession.getCurrentMachine().isInfoType2String()){
+            addNumberLimiter(info2Field);
+        }
+    }
+
+    public void addNumberLimiter(TextField textField){
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                textField.setText(newValue.replaceAll("\\D", ""));
+            }
+        });
     }
 
 
     @FXML
     private void maak(ActionEvent actionEvent) throws IOException {
-        if (currentMachine instanceof PersonenAuto auto){
-            auto.setMerk(merkField.getText());
-            auto.setGewicht(Integer.parseInt(gewichtField.getText()));
-        } else if (currentMachine instanceof VrachtAuto vrauto) {
-            vrauto.setLaadVermogen(Integer.parseInt(laadvermogenField.getText()));
-            vrauto.setGewicht(Integer.parseInt(gewichtField.getText()));
-        } else if (currentMachine instanceof Boormachine boor) {
-            boor.setMerk(merkField.getText());
-            boor.setType(typeField.getText());
-        }
-        currentMachine.addToDatabase();
+        currentSession.getCurrentMachine().setInfo2(info2Field.getText());
+        currentSession.getCurrentMachine().setInfo1(info1Field.getText());
+        currentSession.getCurrentMachine().addToDatabase();
         exit(actionEvent);
     }
 
-    private void exit(ActionEvent actionEvent) throws IOException {
+    private void exit(ActionEvent actionEvent) {
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
@@ -83,26 +71,14 @@ public class ToevoegVensterController extends Controller implements Initializabl
 
     @FXML
     private void onTerugClicked(ActionEvent actionEvent) throws IOException {
-        Database.removeProperty(currentMachine);
-        currentMachine = null;
+        Database.removeProperty(currentSession.getCurrentMachine());
+        currentSession.setCurrentMachine(null);
         exit(actionEvent);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        addNumberLimiter();
     }
 
-    public void addNumberLimiter(){
-        gewichtField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                gewichtField.setText(newValue.replaceAll("\\D", ""));
-            }
-        });
-        laadvermogenField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                laadvermogenField.setText(newValue.replaceAll("\\D", ""));
-            }
-        });
-    }
+
 }

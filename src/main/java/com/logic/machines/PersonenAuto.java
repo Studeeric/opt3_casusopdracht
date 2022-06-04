@@ -17,34 +17,41 @@ public class PersonenAuto extends Machine{
         addToDatabase();
     }
 
-    public void setMerk(String merk){
-        this.merk = merk;
+    @Override
+    public void setInfo1(String info1) {
+        this.merk = info1;
     }
 
-    public void setGewicht(double gewicht){
-        this.gewicht = gewicht;
+    @Override
+    public void setInfo2(String info2) {
+        this.gewicht = Double.parseDouble(info2);
     }
-
-    public String getMerk(){
-        return this.merk;
-    }
-
-    public double getGewicht(){
-        return this.gewicht;
-    }
-
+    @Override
     public String getMachineInfo1Type(){
         return "Merk";
     }
 
+    @Override
     public String getMachineInfo1() {
         return merk;
     }
 
+    @Override
     public String getMachineInfo2Type(){
         return "Gewicht";
     }
 
+    @Override
+    public boolean isInfoType1String() {
+        return true;
+    }
+
+    @Override
+    public boolean isInfoType2String() {
+        return false;
+    }
+
+    @Override
     public String getMachineInfo2(){
         return String.format("%.2f", gewicht);
     }

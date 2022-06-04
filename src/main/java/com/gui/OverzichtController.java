@@ -55,7 +55,9 @@ public class OverzichtController extends Controller implements Initializable {
     @FXML
     private void onMouseClicked() throws IOException {
         if (detailTable.getSelectionModel().getSelectedItem() != null) {
-            Main.popUp("DetailVenster", currentMedewerker, detailTable.getSelectionModel().getSelectedItem());
+            currentSession.setCurrentMachine(detailTable.getSelectionModel().getSelectedItem());
+            currentSession.setFxmlName("DetailVenster");
+            Main.popUp(currentSession);
         }
     }
 

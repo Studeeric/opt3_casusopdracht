@@ -17,25 +17,20 @@ public class Boormachine extends Machine{
         addToDatabase();
     }
 
-    public void setMerk(String merk){
-        this.merk = merk;
-    }
-
-    public void setType(String type){
-        this.type = type;
-    }
-
-    public String getMerk() {
-        return merk;
-    }
-
-    public String getType() {
-        return type;
-    }
 
     @Override
     public String getClassType(){
         return "Boormachine";
+    }
+
+    @Override
+    public void setInfo1(String info1) {
+        this.merk = info1;
+    }
+
+    @Override
+    public void setInfo2(String info2) {
+        this.type = info2;
     }
 
     public String getMachineInfo1Type(){
@@ -48,6 +43,16 @@ public class Boormachine extends Machine{
 
     public String getMachineInfo2Type(){
         return "Type";
+    }
+
+    @Override
+    public boolean isInfoType1String() {
+        return true;
+    }
+
+    @Override
+    public boolean isInfoType2String() {
+        return true;
     }
 
     public String getMachineInfo2(){

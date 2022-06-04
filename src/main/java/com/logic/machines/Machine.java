@@ -47,13 +47,19 @@ public abstract class Machine {
     }
 
     public String getMachineInfo(){
-        return "ID: " + getId() + " - Soort: " + getClassType();
+        return "ID: " + getId();
     }
+
+    public abstract void setInfo1(String info1);
+
+    public abstract void setInfo2(String info2);
 
     public abstract String getMachineInfo1();
     public abstract String getMachineInfo1Type();
     public abstract String getMachineInfo2();
     public abstract String getMachineInfo2Type();
+    public abstract boolean isInfoType1String();
+    public abstract boolean isInfoType2String();
 
     public abstract double getHuurPrijs();
 

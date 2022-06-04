@@ -19,11 +19,13 @@ public class MainMenuController extends Controller{
     }
 
     public void onOverzichtButtonClick() throws IOException {
-        Main.popUp("overzicht", currentMedewerker, currentMachine);
+        currentSession.setFxmlName("Overzicht");
+        Main.popUp(currentSession);
     }
 
     public void onBeheerButtonClick() throws IOException {
-        Main.popUp("beheer", currentMedewerker, currentMachine);
+        currentSession.setFxmlName("Beheer");
+        Main.popUp(currentSession);
     }
 
     @Override

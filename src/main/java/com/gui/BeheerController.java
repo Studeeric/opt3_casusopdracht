@@ -61,7 +61,6 @@ public class BeheerController extends Controller implements Initializable {
     @FXML
     public void selectFactory(){
         factory = FactoryProvider.getFactory(factoryBox.getValue());
-        System.out.println(factoryBox.getValue());
         objectBox.setDisable(false);
         addMachines();
     }
@@ -73,7 +72,9 @@ public class BeheerController extends Controller implements Initializable {
 
     @FXML
     public void create() throws IOException {
-        currentMachine = (Machine) factory.create(objectBox.getValue());
-        Main.popUp("ToevoegVenster", currentMedewerker, currentMachine);
+        Machine machine = (Machine) factory.create(objectBox.getValue());
+        currentSession.setCurrentMachine(machine);
+        currentSession.setFxmlName("ToevoegVenster");
+        Main.popUp(currentSession);
     }
 }

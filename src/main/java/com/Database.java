@@ -1,17 +1,12 @@
 package com;
 
 import com.gui.Controller;
-import com.logic.Huur;
-import com.logic.machines.Machine;
 import com.logic.Medewerker;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
+import com.logic.machines.Machine;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
