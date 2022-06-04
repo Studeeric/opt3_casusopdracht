@@ -2,14 +2,16 @@ package com.logic.machines;
 
 import com.Database;
 
+import java.io.IOException;
+
 public class PersonenAuto extends Machine{
     private final String merk;
     private final double gewicht;
 
-    public PersonenAuto(String merk, double gewicht){
+    public PersonenAuto(String merk, double gewicht) throws IOException {
         this.merk = merk;
         this.gewicht = gewicht;
-        Database.addMachine(this);
+        Database.setProperty(this);
     }
 
     public String getMerk(){

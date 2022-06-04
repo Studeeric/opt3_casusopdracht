@@ -1,15 +1,11 @@
 package com.logic.machines;
 
-import com.gui.Controller;
+import com.Main;
 import com.logic.Huur;
-import com.logic.Medewerker;
-import javafx.beans.InvalidationListener;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
+import java.io.IOException;
 
 public abstract class Machine {
     private Integer id;

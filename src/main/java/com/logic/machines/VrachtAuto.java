@@ -1,16 +1,17 @@
 package com.logic.machines;
 
 import com.Database;
-import javafx.beans.InvalidationListener;
+
+import java.io.IOException;
 
 public class VrachtAuto extends Machine{
     private final double laadVermogen;
     private final double gewicht;
 
-    public VrachtAuto(double laadVermogen, double gewicht){
+    public VrachtAuto(double laadVermogen, double gewicht) throws IOException {
         this.laadVermogen = laadVermogen;
         this.gewicht = gewicht;
-        Database.addMachine(this);
+        Database.setProperty(this);
     }
 
     public double getLaadVermogen(){

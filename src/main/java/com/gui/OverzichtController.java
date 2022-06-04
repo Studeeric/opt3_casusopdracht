@@ -4,13 +4,15 @@ import com.Database;
 import com.Main;
 import com.logic.machines.Machine;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
@@ -43,6 +45,7 @@ public class OverzichtController extends Controller implements Initializable {
         beschikbaarColumn.setCellValueFactory(new PropertyValueFactory<>("HuurStatusString"));
         ObservableList<Machine> data = FXCollections.observableArrayList(parseUserList());
         detailTable.setItems(data);
+        Database.addObserversToMachines(this);
     }
 
     private List<Machine> parseUserList(){
@@ -60,5 +63,12 @@ public class OverzichtController extends Controller implements Initializable {
     public void propertyChange(PropertyChangeEvent evt) {
         setUp();
         detailTable.refresh();
+    }
+
+    @FXML
+    private void onTerugClicked(ActionEvent actionEvent) {
+        Node source = (Node) actionEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 }

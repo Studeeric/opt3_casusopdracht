@@ -41,35 +41,27 @@
       <Text layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verkoper" />
    </Pane>
    <Button fx:id="retourButton" disable="true" layoutX="344.0" layoutY="120.0" mnemonicParsing="false" onAction="#retourActivation" text="Retour" />
-   <Button layoutX="81.0" layoutY="572.0" mnemonicParsing="false" onAction="#saveActivation" text="Opslaan" />
+   <Button layoutX="210.0" layoutY="572.0" mnemonicParsing="false" onAction="#saveActivation" text="Opslaan" />
    <Button layoutX="346.0" layoutY="572.0" mnemonicParsing="false" onAction="#backActivation" text="Terug" />
    <Pane layoutX="36.0" layoutY="168.0">
-      <children>
-         <TextField fx:id="infoField1" disable="true" layoutY="31.0" />
-         <Text fx:id="infoLabel1" layoutY="18.0" onKeyTyped="#keyTyped" text="Infoveld 1:" />
-      </children>
+      <TextField fx:id="infoField1" disable="true" layoutY="31.0"/>
+      <Text fx:id="infoLabel1" layoutY="18.0" onKeyTyped="#keyTyped" text="Infoveld 1:"/>
    </Pane>
    <Pane layoutX="295.0" layoutY="168.0">
-      <children>
-         <TextField fx:id="infoField2" disable="true" layoutY="31.0" />
-         <Text fx:id="infoLabel2" layoutY="18.0" onKeyTyped="#keyTyped" text="Infoveld 2:" />
-      </children>
+      <TextField fx:id="infoField2" disable="true" layoutY="31.0"/>
+      <Text fx:id="infoLabel2" layoutY="18.0" onKeyTyped="#keyTyped" text="Infoveld 2:"/>
    </Pane>
-   <Pane fx:id="invulPane" layoutX="36.0" layoutY="363.0">
-      <children>
-         <Pane>
-            <children>
-               <TextField fx:id="dagenField" layoutY="31.0" onKeyTyped="#keyTyped" promptText="Dagen" />
-               <Text layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totaal dagen verhuur:" />
-            </children>
-         </Pane>
-         <CheckBox fx:id="verzekerBox" layoutX="290.0" layoutY="34.0" mnemonicParsing="false" onAction="#isChecked" text="Verzekeren?" />
-         <Pane layoutX="181.0" layoutY="102.0">
-            <children>
-               <Label layoutX="10.0" text="Prijs:" />
-               <Label fx:id="bedragLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="32.0" />
-            </children>
-         </Pane>
-      </children>
+   <Pane layoutX="36.0" layoutY="363.0">
+      <Pane>
+         <TextField fx:id="dagenField" layoutY="31.0" onKeyTyped="#keyTyped" promptText="Dagen"/>
+         <Text layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totaal dagen verhuur:"/>
+      </Pane>
+      <CheckBox fx:id="verzekerBox" layoutX="290.0" layoutY="34.0" mnemonicParsing="false" onAction="#isChecked"
+                text="Verzekeren?"/>
+      <Pane layoutX="181.0" layoutY="102.0">
+         <Label layoutX="10.0" text="Prijs:"/>
+         <Label fx:id="bedragLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="32.0"/>
+      </Pane>
    </Pane>
+   <Button onAction="#onVerhuurClicked" layoutX="85.0" layoutY="572.0" mnemonicParsing="false" text="Verhuur" />
 </AnchorPane>

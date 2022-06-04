@@ -1,7 +1,6 @@
 package com.gui;
 
 import com.logic.Huur;
-import com.logic.Medewerker;
 import com.logic.machines.Machine;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,11 +15,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.beans.PropertyChangeEvent;
-import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DetailVensterController extends Controller implements Initializable {
+
 
     @FXML
     private Label bedragLabel;
@@ -64,9 +63,6 @@ public class DetailVensterController extends Controller implements Initializable
     @FXML
     private CheckBox verzekerBox;
 
-    @FXML
-    private Pane invulPane;
-
     private Huur tempHuur;
     private boolean saved = true;
 
@@ -84,6 +80,14 @@ public class DetailVensterController extends Controller implements Initializable
         setInfo();
         setVisibilities();
         showPrice();
+    }
+
+    public void addNumberLimiter(){
+        dagenField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                dagenField.setText(newValue.replaceAll("\\D", ""));
+            }
+        });
     }
 
     private void setInfo(){
@@ -111,6 +115,18 @@ public class DetailVensterController extends Controller implements Initializable
         klantNaamField.setDisable(verhuurd);
         dagenField.setDisable(verhuurd);
         verzekerBox.setDisable(verhuurd);
+        addNumberLimiter();
+        addTextLimiter();
+    }
+
+    public void addTextLimiter() {
+        int maxLength = 9;
+        dagenField.textProperty().addListener((ov, oldValue, newValue) -> {
+            if (dagenField.getText().length() > maxLength) {
+                String s = dagenField.getText().substring(0, maxLength);
+                dagenField.setText(s);
+            }
+        });
     }
 
     @FXML
@@ -134,6 +150,18 @@ public class DetailVensterController extends Controller implements Initializable
     }
 
     @FXML
+    private void onVerhuurClicked(){
+        if (fieldsSet()){
+            String klantnaam = klantNaamField.getText();
+            String dagen = dagenField.getText();
+            boolean verzekering = verzekerBox.isSelected();
+            currentMachine.setProperty(new Huur(currentMedewerker, klantnaam, dagen, verzekering));
+        }
+        saved = false;
+        prepController();
+    }
+
+    @FXML
     private void keyTyped(){
         if (!dagenField.getText().isEmpty()){
             showPrice();
@@ -154,14 +182,7 @@ public class DetailVensterController extends Controller implements Initializable
 
     @FXML
     private void saveActivation(){
-        if (fieldsSet()){
-            String klantnaam = klantNaamField.getText();
-            String dagen = dagenField.getText();
-            boolean verzekering = verzekerBox.isSelected();
-            currentMachine.setProperty(new Huur(currentMedewerker, klantnaam, dagen, verzekering));
-        }
         saved = true;
-        prepController();
     }
 
     private boolean fieldsSet(){

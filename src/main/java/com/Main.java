@@ -33,9 +33,8 @@ public class Main extends Application {
         Controller controller = loader.getController();
         controller.setCurrentMedewerker(medewerker);
         controller.setCurrentMachine(machine);
-        for (Machine machine1 : Database.getMachineList()){
-            machine1.addObserver(controller);
-        }
+        Database.addObserver(controller);
+        Database.addObserversToMachines(controller);
         Scene scene = new Scene(mainLayout, 480, 640);
         String c = fxml.substring(0, 1).toUpperCase();
         String title = c + fxml.substring(1);
@@ -46,20 +45,17 @@ public class Main extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         seed();
         launch();
     }
 
-    private static void seed() {
+    private static void seed() throws IOException {
         new Medewerker("Broeder", "Bier");
         Medewerker medewerker = new Medewerker("Eric", "Bull");
         new Boormachine("Boormachine merk", "Boren?").setProperty(new Huur(medewerker, "Stef Beens", "7", false));
         new PersonenAuto("Auto merk", 69);
         new VrachtAuto(420, 666);
         new Boormachine("Boormachine merk 2!!", "Grillen");
-        for (Machine machine : Database.getMachineList()){
-            System.out.println(machine.getMachineInfo());
-        }
     }
 }

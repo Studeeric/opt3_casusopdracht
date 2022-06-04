@@ -2,14 +2,16 @@ package com.logic.machines;
 
 import com.Database;
 
+import java.io.IOException;
+
 public class Boormachine extends Machine{
     private final String merk;
     private final String type;
 
-    public Boormachine(String merk, String type){
+    public Boormachine(String merk, String type) throws IOException {
         this.merk = merk;
         this.type = type;
-        Database.addMachine(this);
+        Database.setProperty(this);
     }
 
     public String getMerk() {
