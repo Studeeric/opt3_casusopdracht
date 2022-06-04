@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.BeheerController" />
+<AnchorPane prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.BeheerController">
+   <children>
+      <Button layoutX="214.0" layoutY="537.0" mnemonicParsing="false" onAction="#onTerugClicked" text="Terug" />
+      <Button fx:id="createButton" onAction="#create" disable="true" layoutX="214.0" layoutY="350.0" mnemonicParsing="false" text="Creëer" />
+      <ComboBox fx:id="objectBox" onAction="#selectMachine" disable="true" layoutX="146.0" layoutY="295.0" prefHeight="25.0" prefWidth="188.0" />
+      <ComboBox fx:id="factoryBox" onAction="#selectFactory" layoutX="146.0" layoutY="216.0" prefHeight="25.0" prefWidth="188.0" promptText="Kies uw type object" />
+   </children>
+</AnchorPane>

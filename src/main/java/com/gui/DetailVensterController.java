@@ -201,6 +201,6 @@ public class DetailVensterController extends Controller implements Initializable
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
+        setInfo();
     }
 }

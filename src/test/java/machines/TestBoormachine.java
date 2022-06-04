@@ -11,7 +11,7 @@ public class TestBoormachine {
 
     @Test
     public void testHuurGV() throws IOException {
-        Machine testBoormachine = new Boormachine("Merk", "Type");
+        Machine testBoormachine = new Boormachine();
         double expected = 25;
         double actual = testBoormachine.getTotaalPrijs(5, false);
         Assertions.assertEquals(expected, actual);
@@ -19,7 +19,7 @@ public class TestBoormachine {
 
     @Test
     public void testHuurWV() throws IOException {
-        Machine testBoormachine = new Boormachine("Merk", "Type");
+        Machine testBoormachine = new Boormachine();
         double expected = 30;
         double actual = testBoormachine.getTotaalPrijs(5, true);
         Assertions.assertEquals(expected, actual);

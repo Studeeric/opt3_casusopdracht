@@ -1,5 +1,6 @@
 package com.logic.machines;
 
+import com.Database;
 import com.Main;
 import com.logic.Huur;
 
@@ -22,6 +23,10 @@ public abstract class Machine {
         Huur old = this.huur;
         this.huur = huur;
         pcs.firePropertyChange("huur", old, huur);
+    }
+
+    public void addToDatabase() throws IOException {
+        Database.setProperty(this);
     }
 
     public Huur getHuur(){

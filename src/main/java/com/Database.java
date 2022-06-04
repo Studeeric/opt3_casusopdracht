@@ -33,6 +33,13 @@ public abstract class Database {
         pcs.firePropertyChange("machineList", old, machineList);
     }
 
+    public static void removeProperty(Machine machine) throws IOException {
+        List<Machine> old = new ArrayList<>(machineList);
+        machineId--;
+        machineList.remove(machine);
+        pcs.firePropertyChange("machineList", old, machineList);
+    }
+
     public static void addObserversToMachines(Controller controller){
         for (Machine machine : machineList){
             machine.addObserver(controller);

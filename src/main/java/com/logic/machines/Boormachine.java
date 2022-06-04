@@ -5,13 +5,24 @@ import com.Database;
 import java.io.IOException;
 
 public class Boormachine extends Machine{
-    private final String merk;
-    private final String type;
+    private String merk;
+    private String type;
+
+    public Boormachine() {
+    }
 
     public Boormachine(String merk, String type) throws IOException {
         this.merk = merk;
         this.type = type;
-        Database.setProperty(this);
+        addToDatabase();
+    }
+
+    public void setMerk(String merk){
+        this.merk = merk;
+    }
+
+    public void setType(String type){
+        this.type = type;
     }
 
     public String getMerk() {

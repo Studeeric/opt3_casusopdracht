@@ -5,13 +5,24 @@ import com.Database;
 import java.io.IOException;
 
 public class PersonenAuto extends Machine{
-    private final String merk;
-    private final double gewicht;
+    private String merk;
+    private double gewicht;
+
+    public PersonenAuto() {
+    }
 
     public PersonenAuto(String merk, double gewicht) throws IOException {
         this.merk = merk;
         this.gewicht = gewicht;
-        Database.setProperty(this);
+        addToDatabase();
+    }
+
+    public void setMerk(String merk){
+        this.merk = merk;
+    }
+
+    public void setGewicht(double gewicht){
+        this.gewicht = gewicht;
     }
 
     public String getMerk(){

@@ -5,13 +5,24 @@ import com.Database;
 import java.io.IOException;
 
 public class VrachtAuto extends Machine{
-    private final double laadVermogen;
-    private final double gewicht;
+    private double laadVermogen;
+    private double gewicht;
+
+    public VrachtAuto() {
+    }
 
     public VrachtAuto(double laadVermogen, double gewicht) throws IOException {
         this.laadVermogen = laadVermogen;
         this.gewicht = gewicht;
-        Database.setProperty(this);
+        addToDatabase();
+    }
+
+    public void setLaadVermogen(double laadVermogen){
+        this.laadVermogen = laadVermogen;
+    }
+
+    public void setGewicht(double gewicht){
+        this.gewicht = gewicht;
     }
 
     public double getLaadVermogen(){

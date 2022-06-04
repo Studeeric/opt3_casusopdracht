@@ -35,6 +35,7 @@ public class Main extends Application {
         controller.setCurrentMachine(machine);
         Database.addObserver(controller);
         Database.addObserversToMachines(controller);
+
         Scene scene = new Scene(mainLayout, 480, 640);
         String c = fxml.substring(0, 1).toUpperCase();
         String title = c + fxml.substring(1);
@@ -51,11 +52,6 @@ public class Main extends Application {
     }
 
     private static void seed() throws IOException {
-        new Medewerker("Broeder", "Bier");
-        Medewerker medewerker = new Medewerker("Eric", "Bull");
-        new Boormachine("Boormachine merk", "Boren?").setProperty(new Huur(medewerker, "Stef Beens", "7", false));
-        new PersonenAuto("Auto merk", 69);
-        new VrachtAuto(420, 666);
-        new Boormachine("Boormachine merk 2!!", "Grillen");
+
     }
 }
