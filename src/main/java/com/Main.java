@@ -36,12 +36,6 @@ public class Main extends Application {
         controller.setCurrentSession(cs);
         Database.addObserver(controller);
         Database.addObserversToMachines(controller);
-        if (cs.getCurrentMedewerker() == null){
-            System.out.println("Onderweg naar : " + cs.getFxmlName() + "is medewerker verdwenen.");
-        }
-        if (cs.getCurrentMachine() == null){
-            System.out.println("Onderweg naar : " + cs.getFxmlName() + "is machine verdwenen.");
-        }
         Scene scene = new Scene(mainLayout, 480, 640);
         String c = cs.getFxmlName().substring(0, 1).toUpperCase();
         String title = c + cs.getFxmlName().substring(1);
