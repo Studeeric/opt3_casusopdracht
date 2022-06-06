@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ToevoegVensterController extends Controller implements Initializable {
+public class ToevoegVensterController extends Controller{
 
     @FXML
     private TextField info1Field;
@@ -75,10 +75,5 @@ public class ToevoegVensterController extends Controller implements Initializabl
         currentSession.setCurrentMachine(null);
         exit(actionEvent);
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
-
 
 }

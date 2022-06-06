@@ -53,7 +53,9 @@ public class Main extends Application {
 
     private static void seed() throws IOException {
         new Medewerker("Eric", "Bull");
-        new Boormachine("Test", "Test2");
+        new Medewerker("Piet", "Jan");
+        new Boormachine("TestBoor", "Test2");
+        new PersonenAuto("Toyota", 150);
         currentSession.setFxmlName("Login");
     }
 }

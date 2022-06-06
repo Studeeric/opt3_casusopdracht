@@ -1,7 +1,6 @@
 package com.logic.machines;
 
 import com.Database;
-import com.Main;
 import com.logic.Huur;
 
 import java.beans.PropertyChangeListener;
@@ -9,20 +8,20 @@ import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 
 public abstract class Machine {
-    private Integer id;
+    protected Integer id;
 
-    private Huur huur;
+    protected Huur huur;
 
-    final private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    final protected PropertyChangeSupport PCS = new PropertyChangeSupport(this);
 
     public void addObserver(PropertyChangeListener l){
-        pcs.addPropertyChangeListener("huur", l);
+        PCS.addPropertyChangeListener("huur", l);
     }
 
     public void setProperty(Huur huur){
         Huur old = this.huur;
         this.huur = huur;
-        pcs.firePropertyChange("huur", old, huur);
+        PCS.firePropertyChange("huur", old, huur);
     }
 
     public void addToDatabase() throws IOException {
