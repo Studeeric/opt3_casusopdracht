@@ -23,6 +23,6 @@ public class PersonenAuto extends Machine{
     }
     @Override
     public double getVerzekeringPrijs() {
-        return Double.parseDouble(PROPERTIES[1].getPropertyValue());
+        return 0.01 * Double.parseDouble(PROPERTIES[1].getPropertyValue());
     }
 }
