@@ -17,7 +17,7 @@ import java.net.URL;
 
 public class Main extends Application {
     static Stage primaryStage;
-    static CurrentSession currentSession = new CurrentSession();
+    static final CurrentSession currentSession = new CurrentSession();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -37,11 +37,22 @@ public class Main extends Application {
         Scene scene = new Scene(mainLayout, 480, 640);
         String c = cs.getFxmlName().substring(0, 1).toUpperCase();
         String title = c + cs.getFxmlName().substring(1);
-        Stage stage = new Stage();
+
+        Stage stage = checkUser(cs);
+
         stage.setScene(scene);
         stage.setTitle(title);
         stage.setResizable(false);
         stage.show();
+    }
+
+    public static Stage checkUser(CurrentSession cs){
+        if (cs.getCurrentStage() == null){
+            cs.setCurrentStage(primaryStage);
+            return new Stage();
+        } else {
+            return cs.getCurrentStage();
+        }
     }
 
     public static void main(String[] args) {
@@ -55,9 +66,11 @@ public class Main extends Application {
         Machine m = new Boormachine();
         m.getProperty(0).setPropertyValue("Philips");
         m.getProperty(1).setPropertyValue("Boren");
+        m.addToDatabase();
         m = new PersonenAuto();
         m.getProperty(0).setPropertyValue("Toyota");
         m.getProperty(1).setPropertyValue("250");
+        m.addToDatabase();
         currentSession.setFxmlName("Login");
     }
 }

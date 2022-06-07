@@ -4,7 +4,6 @@ public class Boormachine extends Machine{
 
     public Boormachine() {
         super();
-        addToDatabase();
     }
 
     @Override
@@ -14,8 +13,8 @@ public class Boormachine extends Machine{
 
     @Override
     protected void setPropertyTypes() {
-        properties[0] = new Property("Merk", null, false);
-        properties[1] = new Property("Type", null, false);
+        PROPERTIES[0] = new Property("Merk", null, false);
+        PROPERTIES[1] = new Property("Type", null, false);
     }
 
     @Override

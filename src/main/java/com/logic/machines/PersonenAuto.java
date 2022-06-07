@@ -4,7 +4,6 @@ public class PersonenAuto extends Machine{
 
     public PersonenAuto() {
         super();
-        addToDatabase();
     }
 
     @Override
@@ -14,8 +13,8 @@ public class PersonenAuto extends Machine{
 
     @Override
     protected void setPropertyTypes() {
-        properties[0] = new Property("Merk", null, false);
-        properties[1] = new Property("Gewicht", null, true);
+        PROPERTIES[0] = new Property("Merk", null, false);
+        PROPERTIES[1] = new Property("Gewicht", null, true);
     }
 
     @Override
@@ -24,6 +23,6 @@ public class PersonenAuto extends Machine{
     }
     @Override
     public double getVerzekeringPrijs() {
-        return Double.parseDouble(properties[1].getPropertyValue());
+        return Double.parseDouble(PROPERTIES[1].getPropertyValue());
     }
 }

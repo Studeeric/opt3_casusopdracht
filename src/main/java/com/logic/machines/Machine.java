@@ -9,7 +9,7 @@ import java.beans.PropertyChangeSupport;
 public abstract class Machine {
     protected Integer id;
     protected Huur huur;
-    protected Property[] properties = new Property[2];
+    protected final Property[] PROPERTIES = new Property[2];
 
     final protected PropertyChangeSupport PCS = new PropertyChangeSupport(this);
 
@@ -56,7 +56,7 @@ public abstract class Machine {
     protected abstract void setPropertyTypes();
 
     public Property getProperty(int index){
-        return properties[index];
+        return PROPERTIES[index];
     }
 
     public abstract double getHuurPrijs();

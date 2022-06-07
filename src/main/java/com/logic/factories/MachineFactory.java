@@ -5,13 +5,11 @@ import com.logic.machines.Machine;
 import com.logic.machines.PersonenAuto;
 import com.logic.machines.VrachtAuto;
 
-import java.io.IOException;
-
 public class MachineFactory implements AbstractFactory<Machine> {
 
 
     @Override
-    public Machine create(String type) throws IOException {
+    public Machine create(String type) {
         if ("Boormachine".equalsIgnoreCase(type)){
             return new Boormachine();
         } else if ("Personenauto".equalsIgnoreCase(type)) {

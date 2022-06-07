@@ -4,13 +4,10 @@ import com.Main;
 import com.logic.factories.AbstractFactory;
 import com.logic.factories.FactoryProvider;
 import com.logic.machines.Machine;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.stage.Stage;
 
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
@@ -37,10 +34,9 @@ public class BeheerController extends Controller implements Initializable {
     }
 
     @FXML
-    private void onTerugClicked(ActionEvent actionEvent) {
-        Node source = (Node) actionEvent.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
+    private void onTerugClicked() throws IOException {
+        currentSession.setFxmlName("MainMenu");
+        Main.popUp(currentSession);
     }
 
     @Override
