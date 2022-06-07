@@ -13,5 +13,5 @@
             <TableColumn fx:id="beschikbaarColumn" prefWidth="100.00006103515625" text="Verhuurd" />
         </columns>
     </TableView>
-   <Button fx:id="onTerugClicked" layoutX="214.0" layoutY="601.0" mnemonicParsing="false" onAction="#onTerugClicked" text="Terug" />
+   <Button layoutX="214.0" layoutY="601.0" mnemonicParsing="false" onAction="#onTerugClicked" text="Terug" />
 </AnchorPane>

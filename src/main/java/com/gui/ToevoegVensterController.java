@@ -4,16 +4,11 @@ import com.Database;
 import com.logic.CurrentSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.beans.PropertyChangeEvent;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class ToevoegVensterController extends Controller{
 
@@ -23,10 +18,6 @@ public class ToevoegVensterController extends Controller{
     @FXML
     private TextField info2Field;
 
-    @FXML
-    private Button maakButton;
-
-
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
@@ -35,12 +26,12 @@ public class ToevoegVensterController extends Controller{
     @Override
     public void setCurrentSession(CurrentSession currentSession){
         this.currentSession = currentSession;
-        info1Field.setPromptText(currentSession.getCurrentMachine().getMachineInfo1Type());
-        info2Field.setPromptText(currentSession.getCurrentMachine().getMachineInfo2Type());
-        if (!currentSession.getCurrentMachine().isInfoType1String()){
+        info1Field.setPromptText(currentSession.getCurrentMachine().getProperty(0).getPROPERTY_TYPE());
+        info2Field.setPromptText(currentSession.getCurrentMachine().getProperty(1).getPROPERTY_TYPE());
+        if (currentSession.getCurrentMachine().getProperty(0).isNUMERIC()){
             addNumberLimiter(info1Field);
         }
-        if (!currentSession.getCurrentMachine().isInfoType2String()){
+        if (currentSession.getCurrentMachine().getProperty(1).isNUMERIC()){
             addNumberLimiter(info2Field);
         }
     }
@@ -55,9 +46,9 @@ public class ToevoegVensterController extends Controller{
 
 
     @FXML
-    private void maak(ActionEvent actionEvent) throws IOException {
-        currentSession.getCurrentMachine().setInfo2(info2Field.getText());
-        currentSession.getCurrentMachine().setInfo1(info1Field.getText());
+    private void maak(ActionEvent actionEvent) {
+        currentSession.getCurrentMachine().getProperty(0).setPropertyValue(info1Field.getText());
+        currentSession.getCurrentMachine().getProperty(1).setPropertyValue(info2Field.getText());
         currentSession.getCurrentMachine().addToDatabase();
         exit(actionEvent);
     }
@@ -70,7 +61,7 @@ public class ToevoegVensterController extends Controller{
     }
 
     @FXML
-    private void onTerugClicked(ActionEvent actionEvent) throws IOException {
+    private void onTerugClicked(ActionEvent actionEvent) {
         Database.removeProperty(currentSession.getCurrentMachine());
         currentSession.setCurrentMachine(null);
         exit(actionEvent);

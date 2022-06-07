@@ -28,6 +28,7 @@ public class BeheerController extends Controller implements Initializable {
     @FXML
     private Button createButton;
 
+    @SuppressWarnings("rawtypes")
     private AbstractFactory factory;
 
     @Override

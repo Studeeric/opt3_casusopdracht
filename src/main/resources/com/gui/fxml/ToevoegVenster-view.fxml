@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.gui.ToevoegVensterController">
-   <Button onAction="#maak" fx:id="maakButton" layoutX="218.0" layoutY="500.0" mnemonicParsing="false" text="Maak"/>
+   <Button onAction="#maak" layoutX="218.0" layoutY="500.0" mnemonicParsing="false" text="Maak"/>
    <Button onAction="#onTerugClicked" layoutX="217.0" layoutY="574.0" mnemonicParsing="false" text="Terug"/>
    <TextField fx:id="info1Field" layoutX="166.0" layoutY="202.0" promptText="merk"/>
    <TextField fx:id="info2Field" layoutX="166.0" layoutY="353.0" promptText="gewicht"/>

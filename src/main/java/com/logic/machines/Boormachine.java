@@ -1,22 +1,11 @@
 package com.logic.machines;
 
-import com.Database;
-
-import java.io.IOException;
-
 public class Boormachine extends Machine{
-    private String merk;
-    private String type;
 
     public Boormachine() {
-    }
-
-    public Boormachine(String merk, String type) throws IOException {
-        this.merk = merk;
-        this.type = type;
+        super();
         addToDatabase();
     }
-
 
     @Override
     public String getClassType(){
@@ -24,39 +13,9 @@ public class Boormachine extends Machine{
     }
 
     @Override
-    public void setInfo1(String info1) {
-        this.merk = info1;
-    }
-
-    @Override
-    public void setInfo2(String info2) {
-        this.type = info2;
-    }
-
-    public String getMachineInfo1Type(){
-        return "Merk";
-    }
-
-    public String getMachineInfo1() {
-        return merk;
-    }
-
-    public String getMachineInfo2Type(){
-        return "Type";
-    }
-
-    @Override
-    public boolean isInfoType1String() {
-        return true;
-    }
-
-    @Override
-    public boolean isInfoType2String() {
-        return true;
-    }
-
-    public String getMachineInfo2(){
-        return type;
+    protected void setPropertyTypes() {
+        properties[0] = new Property("Merk", null, false);
+        properties[1] = new Property("Type", null, false);
     }
 
     @Override

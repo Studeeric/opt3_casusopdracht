@@ -5,26 +5,29 @@ import com.logic.Huur;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.io.IOException;
 
 public abstract class Machine {
     protected Integer id;
-
     protected Huur huur;
+    protected Property[] properties = new Property[2];
 
     final protected PropertyChangeSupport PCS = new PropertyChangeSupport(this);
+
+    protected Machine(){
+        setPropertyTypes();
+    }
 
     public void addObserver(PropertyChangeListener l){
         PCS.addPropertyChangeListener("huur", l);
     }
 
-    public void setProperty(Huur huur){
+    public void setHuur(Huur huur){
         Huur old = this.huur;
         this.huur = huur;
         PCS.firePropertyChange("huur", old, huur);
     }
 
-    public void addToDatabase() throws IOException {
+    public void addToDatabase() {
         Database.setProperty(this);
     }
 
@@ -45,20 +48,16 @@ public abstract class Machine {
         return this.id;
     }
 
+    @SuppressWarnings("unused")
     public String getMachineInfo(){
         return "ID: " + getId();
     }
 
-    public abstract void setInfo1(String info1);
+    protected abstract void setPropertyTypes();
 
-    public abstract void setInfo2(String info2);
-
-    public abstract String getMachineInfo1();
-    public abstract String getMachineInfo1Type();
-    public abstract String getMachineInfo2();
-    public abstract String getMachineInfo2Type();
-    public abstract boolean isInfoType1String();
-    public abstract boolean isInfoType2String();
+    public Property getProperty(int index){
+        return properties[index];
+    }
 
     public abstract double getHuurPrijs();
 
@@ -68,6 +67,7 @@ public abstract class Machine {
         return huur != null;
     }
 
+    @SuppressWarnings("unused")
     public String getHuurStatusString(){
         if (this.huur != null){
             return "Verhuurd";

@@ -6,7 +6,6 @@ import com.logic.machines.Machine;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,14 +20,14 @@ public abstract class Database {
         pcs.addPropertyChangeListener("machineList", l);
     }
 
-    public static void setProperty(Machine machine) throws IOException {
+    public static void setProperty(Machine machine) {
         List<Machine> old = new ArrayList<>(machineList);
         machine.assignId(machineId++);
         machineList.add(machine);
         pcs.firePropertyChange("machineList", old, machineList);
     }
 
-    public static void removeProperty(Machine machine) throws IOException {
+    public static void removeProperty(Machine machine) {
         List<Machine> old = new ArrayList<>(machineList);
         machineId--;
         machineList.remove(machine);

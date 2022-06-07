@@ -2,12 +2,10 @@ package com;
 
 import com.gui.Controller;
 import com.logic.CurrentSession;
-import com.logic.Huur;
 import com.logic.Medewerker;
 import com.logic.machines.Boormachine;
 import com.logic.machines.Machine;
 import com.logic.machines.PersonenAuto;
-import com.logic.machines.VrachtAuto;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -46,16 +44,20 @@ public class Main extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         seed();
         launch();
     }
 
-    private static void seed() throws IOException {
+    private static void seed() {
         new Medewerker("Eric", "Bull");
         new Medewerker("Piet", "Jan");
-        new Boormachine("TestBoor", "Test2");
-        new PersonenAuto("Toyota", 150);
+        Machine m = new Boormachine();
+        m.getProperty(0).setPropertyValue("Philips");
+        m.getProperty(1).setPropertyValue("Boren");
+        m = new PersonenAuto();
+        m.getProperty(0).setPropertyValue("Toyota");
+        m.getProperty(1).setPropertyValue("250");
         currentSession.setFxmlName("Login");
     }
 }

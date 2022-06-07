@@ -2,7 +2,6 @@ package com.gui;
 
 import com.logic.CurrentSession;
 import com.logic.Huur;
-import com.logic.machines.Machine;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -94,10 +93,10 @@ public class DetailVensterController extends Controller implements Initializable
     private void setInfo(){
         classLabel.setText(currentSession.getCurrentMachine().getClassType());
         idLabel.setText("ID: " + currentSession.getCurrentMachine().getId());
-        infoLabel1.setText(currentSession.getCurrentMachine().getMachineInfo1Type());
-        infoField1.setText(currentSession.getCurrentMachine().getMachineInfo1());
-        infoLabel2.setText(currentSession.getCurrentMachine().getMachineInfo2Type());
-        infoField2.setText(currentSession.getCurrentMachine().getMachineInfo2());
+        infoLabel1.setText(currentSession.getCurrentMachine().getProperty(0).getPROPERTY_TYPE());
+        infoField1.setText(currentSession.getCurrentMachine().getProperty(0).getPropertyValue());
+        infoLabel2.setText(currentSession.getCurrentMachine().getProperty(1).getPROPERTY_TYPE());
+        infoField2.setText(currentSession.getCurrentMachine().getProperty(1).getPropertyValue());
         if (currentSession.getCurrentMachine().getHuurStatus()){
             verkoperField.setText(currentSession.getCurrentMachine().getHuur().medewerker().getUsername());
             klantNaamField.setText(currentSession.getCurrentMachine().getHuur().klantNaam());
@@ -133,7 +132,7 @@ public class DetailVensterController extends Controller implements Initializable
     @FXML
     private void retourActivation(){
         tempHuur = currentSession.getCurrentMachine().getHuur();
-        currentSession.getCurrentMachine().setProperty(null);
+        currentSession.getCurrentMachine().setHuur(null);
         verkoperField.setText(currentSession.getCurrentMedewerker().getUsername());
         klantNaamField.clear();
         dagenField.clear();
@@ -156,7 +155,7 @@ public class DetailVensterController extends Controller implements Initializable
             String klantnaam = klantNaamField.getText();
             String dagen = dagenField.getText();
             boolean verzekering = verzekerBox.isSelected();
-            currentSession.getCurrentMachine().setProperty(new Huur(currentSession.getCurrentMedewerker(), klantnaam, dagen, verzekering));
+            currentSession.getCurrentMachine().setHuur(new Huur(currentSession.getCurrentMedewerker(), klantnaam, dagen, verzekering));
         }
         saved = false;
         prepController();
@@ -193,7 +192,7 @@ public class DetailVensterController extends Controller implements Initializable
     @FXML
     public void backActivation(ActionEvent actionEvent) {
         if (!saved){
-            currentSession.getCurrentMachine().setProperty(tempHuur);
+            currentSession.getCurrentMachine().setHuur(tempHuur);
         }
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();

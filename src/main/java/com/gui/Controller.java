@@ -1,8 +1,6 @@
 package com.gui;
 
 import com.logic.CurrentSession;
-import com.logic.Medewerker;
-import com.logic.machines.Machine;
 
 import java.beans.PropertyChangeListener;
 
@@ -13,7 +11,4 @@ public abstract class Controller implements PropertyChangeListener {
         this.currentSession = currentSession;
     }
 
-    public CurrentSession getCurrentSession(){
-        return this.currentSession;
-    }
 }
