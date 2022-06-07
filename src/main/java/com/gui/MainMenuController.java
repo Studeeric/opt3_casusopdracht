@@ -14,6 +14,7 @@ public class MainMenuController extends Controller{
     private Button exitButton;
 
     public void onExitButtonClick(){
+        currentSession.getCurrentMedewerker().setLoggedIn(false);
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }

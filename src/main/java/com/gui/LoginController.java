@@ -31,15 +31,18 @@ public class LoginController extends Controller {
         for (Medewerker medewerker : Database.getMedewerkerList()){
             if (medewerker.getUsername().equals(usernameField.getText())){
                 if (medewerker.checkPassword(passwordField.getText())){
-                    notFound = false;
-                    currentSession = new CurrentSession();
-                    Scene scene = new Scene(new AnchorPane(), 480, 640);
-                    Stage stage = new Stage();
-                    stage.setScene(scene);
-                    currentSession.setCurrentStage(stage);
-                    currentSession.setCurrentMedewerker(medewerker);
-                    currentSession.setFxmlName("MainMenu");
-                    Main.popUp(currentSession);
+                    if (!medewerker.isLoggedIn()){
+                        medewerker.setLoggedIn(true);
+                        notFound = false;
+                        currentSession = new CurrentSession();
+                        Scene scene = new Scene(new AnchorPane(), 480, 640);
+                        Stage stage = new Stage();
+                        stage.setScene(scene);
+                        currentSession.setCurrentStage(stage);
+                        currentSession.setCurrentMedewerker(medewerker);
+                        currentSession.setFxmlName("MainMenu");
+                        Main.popUp(currentSession);
+                    }
                 }
             }
         }

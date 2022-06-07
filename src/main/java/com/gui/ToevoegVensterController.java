@@ -1,14 +1,13 @@
 package com.gui;
 
 import com.Database;
+import com.Main;
 import com.logic.CurrentSession;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.beans.PropertyChangeEvent;
+import java.io.IOException;
 
 public class ToevoegVensterController extends Controller{
 
@@ -46,25 +45,24 @@ public class ToevoegVensterController extends Controller{
 
 
     @FXML
-    private void maak(ActionEvent actionEvent) {
+    private void maak() throws IOException {
         currentSession.getCurrentMachine().getProperty(0).setPropertyValue(info1Field.getText());
         currentSession.getCurrentMachine().getProperty(1).setPropertyValue(info2Field.getText());
         currentSession.getCurrentMachine().addToDatabase();
-        exit(actionEvent);
+        exit();
     }
 
-    private void exit(ActionEvent actionEvent) {
-        Node source = (Node) actionEvent.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
+    private void exit() throws IOException {
+        currentSession.setFxmlName("Beheer");
+        Main.popUp(currentSession);
 
     }
 
     @FXML
-    private void onTerugClicked(ActionEvent actionEvent) {
+    private void onTerugClicked() throws IOException {
         Database.removeProperty(currentSession.getCurrentMachine());
         currentSession.setCurrentMachine(null);
-        exit(actionEvent);
+        exit();
     }
 
 }
