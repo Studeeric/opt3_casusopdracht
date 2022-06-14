@@ -5,12 +5,10 @@ import com.logic.machines.Machine;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-
 public class TestBoormachine {
 
     @Test
-    public void testHuurGV() throws IOException {
+    public void testHuurGV() {
         Machine testBoormachine = new Boormachine();
         double expected = 25;
         double actual = testBoormachine.getTotaalPrijs(5, false);
@@ -18,7 +16,7 @@ public class TestBoormachine {
     }
 
     @Test
-    public void testHuurWV() throws IOException {
+    public void testHuurWV() {
         Machine testBoormachine = new Boormachine();
         double expected = 30;
         double actual = testBoormachine.getTotaalPrijs(5, true);

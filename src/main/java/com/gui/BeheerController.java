@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
-import java.beans.PropertyChangeEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,11 +26,6 @@ public class BeheerController extends Controller implements Initializable {
 
     @SuppressWarnings("rawtypes")
     private AbstractFactory factory;
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-
-    }
 
     @FXML
     private void onTerugClicked() throws IOException {

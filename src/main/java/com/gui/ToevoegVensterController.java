@@ -6,7 +6,6 @@ import com.logic.CurrentSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-import java.beans.PropertyChangeEvent;
 import java.io.IOException;
 
 public class ToevoegVensterController extends Controller{
@@ -16,11 +15,6 @@ public class ToevoegVensterController extends Controller{
 
     @FXML
     private TextField info2Field;
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-
-    }
 
     @Override
     public void setCurrentSession(CurrentSession currentSession){

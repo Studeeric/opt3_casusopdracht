@@ -29,9 +29,4 @@ public class MainMenuController extends Controller{
         Main.popUp(currentSession);
     }
 
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-
-    }
-
 }

@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.beans.PropertyChangeEvent;
 import java.io.IOException;
 
 public class LoginController extends Controller {
@@ -68,10 +67,5 @@ public class LoginController extends Controller {
         currentSession.setCurrentMedewerker(medewerker);
         currentSession.setFxmlName("MainMenu");
         Main.popUp(currentSession);
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-
     }
 }
