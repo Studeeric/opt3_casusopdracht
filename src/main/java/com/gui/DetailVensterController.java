@@ -4,7 +4,6 @@ import com.Main;
 import com.logic.CurrentSession;
 import com.logic.Huur;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -14,10 +13,8 @@ import javafx.scene.text.Text;
 
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class DetailVensterController extends Controller implements Initializable {
+public class DetailVensterController extends Controller {
 
 
     @FXML
@@ -64,10 +61,6 @@ public class DetailVensterController extends Controller implements Initializable
 
     private Huur tempHuur;
     private boolean saved = true;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
 
     @Override
     public void setCurrentSession(CurrentSession currentSession) {

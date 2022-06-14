@@ -5,9 +5,9 @@ public class Property {
     private String propertyValue;
     private final boolean NUMERIC;
 
-    public Property(String property_type, String property, boolean numeric){
+    public Property(String property_type, String propertyValue, boolean numeric){
         this.PROPERTY_TYPE = property_type;
-        this.propertyValue = property;
+        this.propertyValue = propertyValue;
         this.NUMERIC = numeric;
     }
 
