@@ -26,29 +26,48 @@ public class LoginController extends Controller {
     @FXML
     private Label welcomeText;
 
-    public void onHelloButtonClick() throws IOException {
-        boolean notFound = true;
-        for (Medewerker medewerker : Database.getMedewerkerList()){
-            if (medewerker.getUsername().equals(usernameField.getText())){
-                if (medewerker.checkPassword(passwordField.getText())){
-                    if (!medewerker.isLoggedIn()){
-                        medewerker.setLoggedIn(true);
-                        notFound = false;
-                        currentSession = new CurrentSession();
-                        Scene scene = new Scene(new AnchorPane(), 480, 640);
-                        Stage stage = new Stage();
-                        stage.setScene(scene);
-                        currentSession.setCurrentStage(stage);
-                        currentSession.setCurrentMedewerker(medewerker);
-                        currentSession.setFxmlName("MainMenu");
-                        Main.popUp(currentSession);
-                    }
-                }
-            }
+    @FXML
+    public void loginButton() throws IOException {
+        loginAttempt();
+    }
+
+    public void loginAttempt() throws IOException {
+        currentSession.setCurrentMedewerker(findMedewerker(usernameField.getText()));
+        boolean succes = passwordChecker(passwordField.getText());
+        if (succes){
+            succesLogin(currentSession.getCurrentMedewerker());
         }
-        welcomeText.setVisible(notFound);
+        welcomeText.setVisible(!succes);
         usernameField.clear();
         passwordField.clear();
+    }
+
+    public Medewerker findMedewerker(String username){
+        for (Medewerker m : Database.getMedewerkerList()){
+            if (m.getUsername().equals(username) && !m.isLoggedIn()){
+                return m;
+            }
+        }
+        return null;
+    }
+
+    public boolean passwordChecker(String password){
+        if (currentSession.getCurrentMedewerker() != null){
+            return currentSession.getCurrentMedewerker().checkPassword(password);
+        }
+        return false;
+    }
+
+    public void succesLogin(Medewerker medewerker) throws IOException {
+        medewerker.setLoggedIn(true);
+        currentSession = new CurrentSession();
+        Scene scene = new Scene(new AnchorPane(), 480, 640);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        currentSession.setCurrentStage(stage);
+        currentSession.setCurrentMedewerker(medewerker);
+        currentSession.setFxmlName("MainMenu");
+        Main.popUp(currentSession);
     }
 
     @Override

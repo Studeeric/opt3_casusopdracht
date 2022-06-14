@@ -3,17 +3,14 @@ package com.gui;
 import com.Main;
 import com.logic.CurrentSession;
 import com.logic.Huur;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
@@ -192,7 +189,7 @@ public class DetailVensterController extends Controller implements Initializable
     }
 
     @FXML
-    public void backActivation(ActionEvent actionEvent) throws IOException {
+    public void backActivation() throws IOException {
         if (!saved){
             currentSession.getCurrentMachine().setHuur(tempHuur);
         }
